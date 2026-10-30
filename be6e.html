@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mahindra BE 6e | Born Electric SUV</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #00e5ff;
+      --primary-dark: #00b4cc;
+      --dark: #0a0c10;
+      --card-bg: #12161f;
+      --light: #f0f6fc;
+      --text-muted: #8b949e;
+      --border: #21262d;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    body {
+      background-color: var(--dark);
+      color: var(--light);
+      line-height: 1.6;
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(10, 12, 16, 0.95);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5%;
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.3rem;
+      letter-spacing: 1px;
+      color: var(--light);
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: var(--primary);
+    }
+
+    .nav-links a {
+      color: var(--light);
+      text-decoration: none;
+      margin-left: 2rem;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 3rem 5%;
+      background: radial-gradient(circle at 75% 50%, #0d2836 0%, var(--dark) 70%);
+      gap: 2rem;
+    }
+
+    .hero-text {
+      max-width: 550px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--primary);
+      color: #000;
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .hero-text h1 {
+      font-size: 3.5rem;
+      line-height: 1.1;
+      margin: 1rem 0;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+    }
+
+    .hero-text p {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .price-tag {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 1.5rem;
+    }
+
+    .price-tag span {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-weight: normal;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .btn {
+      padding: 0.8rem 1.8rem;
+      border-radius: 4px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: none;
+      transition: 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #000;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--light);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .hero-preview {
+      flex: 1;
+      text-align: center;
+    }
+
+    .hero-preview img {
+      width: 100%;
+      max-width: 580px;
+      border-radius: 12px;
+      filter: drop-shadow(0 20px 30px rgba(0, 229, 255, 0.15));
+      object-fit: cover;
+    }
+
+    .color-picker {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .color-swatch {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid #333;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .color-swatch.active {
+      border-color: var(--primary);
+      transform: scale(1.15);
+    }
+
+    /* Specs Banner */
+    .specs-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      background: #0d1117;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 2rem 5%;
+      gap: 1.5rem;
+    }
+
+    .spec-box {
+      border-left: 2px solid var(--primary);
+      padding-left: 1rem;
+    }
+
+    .spec-box h3 {
+      font-size: 1.5rem;
+      color: #fff;
+    }
+
+    .spec-box p {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    /* Section Structure */
+    .section-container {
+      padding: 4rem 5%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title h2 {
+      font-size: 2.2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .section-title p {
+      color: var(--text-muted);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .feature-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.8rem;
+      transition: transform 0.2s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .feature-card i {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+
+    .feature-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* Charging Metric Section */
+    .charging-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+      margin-top: 2rem;
+      align-items: center;
+    }
+
+    .charging-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .stat-bar {
+      background: #0a0c10;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1rem;
+    }
+
+    .stat-bar span {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    .stat-bar strong {
+      display: block;
+      font-size: 1.3rem;
+      color: var(--primary);
+    }
+
+    /* EMI Section */
+    .calculator-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    .calc-row {
+      margin-bottom: 1.2rem;
+    }
+
+    .calc-row label {
+      display: block;
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+      color: var(--text-muted);
+    }
+
+    .calc-row input {
+      width: 100%;
+      padding: 0.75rem;
+      background: #0a0c10;
+      border: 1px solid var(--border);
+      color: #fff;
+      border-radius: 4px;
+    }
+
+    .calc-result {
+      background: #19202c;
+      padding: 1rem;
+      border-radius: 4px;
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .calc-result h4 {
+      font-size: 1.6rem;
+      color: var(--primary);
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      place-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      width: 90%;
+      max-width: 450px;
+      position: relative;
+      border: 1px solid var(--border);
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--text-muted);
+    }
+
+    .modal-content form input,
+    .modal-content form select {
+      width: 100%;
+      padding: 0.8rem;
+      background: #0a0c10;
+      border: 1px solid var(--border);
+      color: #fff;
+      margin-bottom: 1rem;
+      border-radius: 4px;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero-cta {
+        justify-content: center;
+      }
+      .nav-links {
+        display: none;
+      }
+      .charging-card {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <nav>
+    <a href="index.html" class="logo">SPORTS<span>GARAGE</span></a>
+    <div class="nav-links">
+      <a href="#overview">Overview</a>
+      <a href="#specs">EV Performance</a>
+      <a href="#features">Architecture</a>
+      <a href="#charging">Charging</a>
+      <a href="#calculator">EMI Calculator</a>
+    </div>
+    <a href="index.html" class="btn btn-outline" style="padding: 0.4rem 1rem;">Back to Fleet</a>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="overview">
+    <div class="hero-text">
+      <span class="badge">Born Electric Series</span>
+      <h1>Mahindra BE 6e</h1>
+      <p>A radical coupe crossover from the future. Built from scratch on the all-electric INGLO architecture, delivering pulse-raising acceleration and zero emissions.</p>
+      
+      <div class="price-tag">
+        ₹19,00,000 <span>Starting Ex-Showroom</span>
+      </div>
+
+      <div class="hero-cta">
+        <button class="btn btn-primary" onclick="openModal('Reserve Mahindra BE 6e')">Book Online</button>
+        <button class="btn btn-outline" onclick="openModal('Schedule BE 6e Experience Drive')">Experience Drive</button>
+      </div>
+    </div>
+
+    <div class="hero-preview">
+      <img id="be6e-img" src="76.-Mahindra-BE-6e-Feature.webp" alt="Mahindra BE 6e" />
+      <div class="color-picker">
+        <div class="color-swatch active" style="background: #2a3d45;" title="Stealth Cyan" onclick="changeColor('76.-Mahindra-BE-6e-Feature.webp', this)"></div>
+        <div class="color-swatch" style="background: #0f1115;" title="Obsidian Black" onclick="changeColor('76.-Mahindra-BE-6e-Feature.webp', this)"></div>
+        <div class="color-swatch" style="background: #cfd6df;" title="Liquid Silver" onclick="changeColor('76.-Mahindra-BE-6e-Feature.webp', this)"></div>
+      </div>
+      <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">Aero Palette Finishes</p>
+    </div>
+  </section>
+
+  <!-- Spec Metrics Banner -->
+  <div class="specs-strip" id="specs">
+    <div class="spec-box">
+      <h3>500 km</h3>
+      <p>Estimated Range Per Charge</p>
+    </div>
+    <div class="spec-box">
+      <h3>175 kW</h3>
+      <p>Peak DC Charging Support</p>
+    </div>
+    <div class="spec-box">
+      <h3>0-100 km/h</h3>
+      <p>Sub 6.7 Seconds</p>
+    </div>
+    <div class="spec-box">
+      <h3>4 Seater</h3>
+      <p>Futuristic Aero Cockpit</p>
+    </div>
+  </div>
+
+  <!-- Tech Highlights -->
+  <section class="section-container" id="features">
+    <div class="section-title">
+      <h2>Next-Gen Platform Innovations</h2>
+      <p>Designed on Mahindra's ground-up INGLO modular skateboard platform</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <i class="ri-battery-charge-line"></i>
+        <h3>LFP Blade Battery Tech</h3>
+        <p>Ultra-safe Blade cell chemistry offering exceptional thermal stability, structural floor rigidity, and prolonged cycle life.</p>
+      </div>
+
+      <div class="feature-card">
+        <i class="ri-flight-takeoff-line"></i>
+        <h3>Aero-Flow Bodywork</h3>
+        <p>Flush pop-out door handles, aero-blade alloy wheels, and an active front airflow duct delivering a drag coefficient below 0.28 Cd.</p>
+      </div>
+
+      <div class="feature-card">
+        <i class="ri-macbook-line"></i>
+        <h3>Panoramic Edge Displays</h3>
+        <p>Continuous twin 12.3-inch floating digital cockpits powered by a high-speed automotive Snapdragon compute processor.</p>
+      </div>
+
+      <div class="feature-card">
+        <i class="ri-wireless-charging-line"></i>
+        <h3>Vehicle To Load (V2L)</h3>
+        <p>Bi-directional charging capability allows you to power laptops, camping gear, and appliances directly from the car's high-voltage pack.</p>
+      </div>
+    </div>
+
+    <!-- Charging Station Integration -->
+    <div class="charging-card" id="charging">
+      <div>
+        <span class="badge">Ultra-Fast Charging</span>
+        <h3 style="font-size: 1.8rem; margin: 0.8rem 0;">Rapid Charging Speeds</h3>
+        <p style="color: var(--text-muted); margin-bottom: 1rem;">
+          The high-voltage 400V powertrain architecture reduces turnaround times on highway transit stops to a brief coffee break.
+        </p>
+        <button class="btn btn-primary" onclick="openModal('Locate Nearest BE Fast Charger')">Find Fast Chargers</button>
+      </div>
+
+      <div class="charging-stats">
+        <div class="stat-bar">
+          <span>DC Fast Charger (175 kW)</span>
+          <strong>20% to 80% in 20 Mins</strong>
+        </div>
+        <div class="stat-bar">
+          <span>Home Wallbox AC (11 kW)</span>
+          <strong>0% to 100% in ~6.5 Hours</strong>
+        </div>
+        <div class="stat-bar">
+          <span>Regenerative Coasting</span>
+          <strong>3-Stage Multi-Level Braking</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Financing Calculator -->
+  <section class="section-container" id="calculator" style="background: #0d1117;">
+    <div class="section-title">
+      <h2>BE 6e EV Loan Calculator</h2>
+      <p>Calculate your monthly budget for the ₹19.00 Lakh electric crossover</p>
+    </div>
+
+    <div class="calculator-box">
+      <div class="calc-row">
+        <label>Down Payment (₹)</label>
+        <input type="number" id="down-payment" value="300000" oninput="calculateEMI()" />
+      </div>
+      <div class="calc-row">
+        <label>Loan Duration (Years)</label>
+        <input type="number" id="loan-term" value="5" min="1" max="7" oninput="calculateEMI()" />
+      </div>
+      <div class="calc-row">
+        <label>EV Green Loan Interest Rate (% Annual)</label>
+        <input type="number" id="loan-rate" value="8.7" step="0.1" oninput="calculateEMI()" />
+      </div>
+
+      <div class="calc-result">
+        <span style="font-size: 0.85rem; color: var(--text-muted);">Estimated Monthly Payment</span>
+        <h4 id="emi-output">₹32,980 / month</h4>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Action Modal -->
+  <div id="action-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <h3 id="modal-heading" style="margin-bottom: 1rem;">Reserve BE 6e</h3>
+      <form onsubmit="handleBEForm(event)">
+        <input type="text" placeholder="Your Name" required />
+        <input type="tel" placeholder="Mobile Number" required />
+        <select required>
+          <option value="">Preferred Battery / Drivetrain</option>
+          <option>Long Range RWD (60 kWh Pack)</option>
+          <option>Long Range RWD (79 kWh Pack)</option>
+          <option>Dual Motor All-Wheel Drive (AWD)</option>
+        </select>
+        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Submit Application</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function changeColor(imgSrc, element) {
+      document.getElementById("be6e-img").src = imgSrc;
+      document.querySelectorAll(".color-swatch").forEach(swatch => swatch.classList.remove("active"));
+      element.classList.add("active");
+    }
+
+    function openModal(heading) {
+      document.getElementById("modal-heading").innerText = heading;
+      document.getElementById("action-modal").style.display = "grid";
+    }
+
+    function closeModal() {
+      document.getElementById("action-modal").style.display = "none";
+    }
+
+    window.onclick = function(e) {
+      if (e.target === document.getElementById("action-modal")) closeModal();
+    };
+
+    function handleBEForm(e) {
+      e.preventDefault();
+      alert("Application received! A Sports Garage EV specialist will contact you with test drive scheduling and home charger setup information.");
+      closeModal();
+    }
+
+    function calculateEMI() {
+      const basePrice = 1900000;
+      const downPayment = Number(document.getElementById("down-payment").value) || 0;
+      const termYears = Number(document.getElementById("loan-term").value) || 1;
+      const ratePercent = Number(document.getElementById("loan-rate").value) || 0;
+
+      const principal = Math.max(0, basePrice - downPayment);
+      const monthlyRate = (ratePercent / 12) / 100;
+      const totalMonths = termYears * 12;
+
+      if (monthlyRate === 0) {
+        const simpleEmi = Math.round(principal / totalMonths);
+        document.getElementById("emi-output").innerText = "₹" + simpleEmi.toLocaleString("en-IN") + " / month";
+        return;
+      }
+
+      const emi = (principal * monthlyRate * Math.pow(1 + monthlyRate, totalMonths)) / (Math.pow(1 + monthlyRate, totalMonths) - 1);
+      document.getElementById("emi-output").innerText = "₹" + Math.round(emi).toLocaleString("en-IN") + " / month";
+    }
+
+    calculateEMI();
+  </script>
+</body>
+</html>

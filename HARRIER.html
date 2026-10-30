@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tata Harrier 2026 - Premium SUV Details</title>
+    <style>
+        /* CSS Styling */
+        :root {
+            --primary-color: #d11243;
+            --secondary-color: #2c3e50;
+            --bg-color: #f4f7f6;
+            --text-color: #333;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--secondary-color);
+            color: #fff;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+
+        /* Hero / Detail Section */
+        .car-hero {
+            display: flex;
+            flex-wrap: wrap;
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        }
+
+        .car-image {
+            flex: 1 1 500px;
+            background: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .car-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            mix-blend-mode: multiply;
+        }
+
+        .car-details {
+            flex: 1 1 400px;
+            padding: 2.5rem;
+        }
+
+        .car-title {
+            font-size: 2.5rem;
+            margin: 0 0 0.5rem 0;
+            color: var(--secondary-color);
+        }
+
+        .car-subtitle {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .car-price {
+            font-size: 2rem;
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+            margin-bottom: 2.5rem;
+        }
+
+        .spec-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            text-align: center;
+        }
+
+        .spec-item strong {
+            display: block;
+            font-size: 0.85rem;
+            color: #777;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+        }
+
+        .spec-item span {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            flex: 1;
+            text-align: center;
+            padding: 14px 24px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background-color: #b00d36;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--secondary-color);
+            color: #fff;
+        }
+
+        /* Tabs Section */
+        .tabs-container {
+            margin-top: 3rem;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .tab-headers {
+            display: flex;
+            background: #e9ecef;
+            border-bottom: 2px solid #dee2e6;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 18px;
+            border: none;
+            background: none;
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .tab-btn.active {
+            background: var(--card-bg);
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .tab-content {
+            display: none;
+            padding: 2.5rem;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .features-list li {
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .features-list li::before {
+            content: '✓';
+            color: #fff;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.8rem;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .car-title { font-size: 2rem; }
+            .car-price { font-size: 1.5rem; }
+            .action-buttons { flex-direction: column; }
+            .tab-btn { padding: 12px; font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Sportsgarage</h1>
+        <div style="font-weight: 600;">Contact Sales: 1800-XXX-XXXX</div>
+    </header>
+
+    <div class="container">
+        <!-- Main Car Detail Card -->
+        <div class="car-hero">
+            <div class="car-image">
+                <!-- Replace src with your actual image path -->
+                <img src="https://imgd.aeplcdn.com/664x374/n/cw/ec/142739/harrier-exterior-right-front-three-quarter-2.jpeg" alt="Tata Harrier Front View">
+            </div>
+            
+            <div class="car-details">
+                <h2 class="car-title">Tata Harrier</h2>
+                <p class="car-subtitle">Bold Design. Advanced Tech. Supreme Comfort.</p>
+                
+                <div class="car-price">
+                    ₹ 12.89 Lakh - ₹ 25.95 Lakh <span style="font-size:0.9rem; color:#888; font-weight:normal;">(Ex-Showroom)</span>
+                </div>
+                
+                <div class="specs-grid">
+                    <div class="spec-item">
+                        <strong>Engine</strong>
+                        <span>1.5L petrol / 2.0L Diesel</span>
+                    </div>
+                    <div class="spec-item">
+                        <strong>Power</strong>
+                        <span>167.62 bhp</span>
+                    </div>
+                    <div class="spec-item">
+                        <strong>Transmission</strong>
+                        <span>Manual & Automatic</span>
+                    </div>
+                    <div class="spec-item">
+                        <strong>Mileage</strong>
+                        <span>Up to 16.8 kmpl</span>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-primary" onclick="alert('Booking portal opened!')">Book Now</button>
+                    <button class="btn btn-outline" onclick="alert('Test drive scheduled!')">Schedule Test Drive</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Information Tabs -->
+        <div class="tabs-container">
+            <div class="tab-headers">
+                <button class="tab-btn active" onclick="openTab(event, 'features')">Key Features</button>
+                <button class="tab-btn" onclick="openTab(event, 'specs')">Full Specifications</button>
+                <button class="tab-btn" onclick="openTab(event, 'variants')">Popular Variants</button>
+            </div>
+
+            <!-- Features Tab -->
+            <div id="features" class="tab-content active">
+                <h3>Premium Features</h3>
+                <ul class="features-list">
+                    <li>14.5-inch Touchscreen Infotainment</li>
+                    <li>10-Speaker JBL Black Audio System (Dolby Atmos)</li>
+                    <li>Advanced Driver Assistance Systems (ADAS)</li>
+                    <li>Panoramic Sunroof with Mood Lighting</li>
+                    <li>360-Degree Surround View Camera</li>
+                    <li>Ventilated Front Seats</li>
+                    <li>6 to 7 Airbags (Variant Dependent)</li>
+                    <li>Digital Interior Rear View Mirror (IRVM)</li>
+                </ul>
+            </div>
+
+            <!-- Specs Tab -->
+            <div id="specs" class="tab-content">
+                <h3>Technical Specifications</h3>
+                <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                    <tr style="border-bottom: 1px solid #ddd;">
+                        <td style="padding: 10px 0; font-weight: 600; width: 40%;">Seating Capacity</td>
+                        <td style="padding: 10px 0;">5 Seater</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #ddd;">
+                        <td style="padding: 10px 0; font-weight: 600;">Max Torque</td>
+                        <td style="padding: 10px 0;">Up to 350 Nm @ 1750-2500 rpm (Diesel)</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #ddd;">
+                        <td style="padding: 10px 0; font-weight: 600;">Dimensions (L x W x H)</td>
+                        <td style="padding: 10px 0;">4605 mm x 1922 mm x 1718 mm</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #ddd;">
+                        <td style="padding: 10px 0; font-weight: 600;">Wheelbase</td>
+                        <td style="padding: 10px 0;">2741 mm</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #ddd;">
+                        <td style="padding: 10px 0; font-weight: 600;">Boot Space</td>
+                        <td style="padding: 10px 0;">445 Litres</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Variants Tab -->
+            <div id="variants" class="tab-content">
+                <h3>Available Trim Levels</h3>
+                <p>The Harrier offers over 40 distinct variants allowing buyers to choose precisely what they need, spanning from the base "Smart" to the fully loaded "Fearless Ultra Dark Edition".</p>
+                <ul class="features-list" style="margin-top: 15px;">
+                    <li><strong>Smart:</strong> Essential features, 6 Airbags, Digital Cockpit</li>
+                    <li><strong>Pure X:</strong> Panoramic Sunroof, Dual Displays, 360° Camera</li>
+                    <li><strong>Adventure X:</strong> Leather Seats, Multi-Drive Modes, Powered Driver Seat</li>
+                    <li><strong>Fearless Ultra:</strong> 14.5" Screen, ADAS, Digital IRVM, JBL Audio</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript for Tabs -->
+    <script>
+        function openTab(evt, tabName) {
+            // Hide all tab contents
+            const tabContents = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+
+            // Remove 'active' class from all buttons
+            const tabBtns = document.getElementsByClassName("tab-btn");
+            for (let i = 0; i < tabBtns.length; i++) {
+                tabBtns[i].classList.remove("active");
+            }
+
+            // Show the specific tab and mark the button as active
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+</body>
+</html>

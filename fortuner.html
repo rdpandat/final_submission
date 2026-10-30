@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Toyota Fortuner | Sports Garage</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #c9922c;
+      --primary-hover: #b07d1e;
+      --dark: #0f1013;
+      --card-bg: #17191e;
+      --light: #f5f6f8;
+      --text-muted: #8d929d;
+      --border: #262932;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    body {
+      background-color: var(--dark);
+      color: var(--light);
+      line-height: 1.6;
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(15, 16, 19, 0.95);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.1rem 5%;
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.3rem;
+      letter-spacing: 1px;
+      color: var(--light);
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: var(--primary);
+    }
+
+    .nav-links a {
+      color: var(--light);
+      text-decoration: none;
+      margin-left: 2rem;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      min-height: 72vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 3rem 5%;
+      background: radial-gradient(circle at 75% 50%, #2a2213 0%, var(--dark) 70%);
+      gap: 2rem;
+    }
+
+    .hero-text {
+      max-width: 560px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--primary);
+      color: #111;
+      padding: 0.35rem 0.9rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .hero-text h1 {
+      font-size: 3.3rem;
+      line-height: 1.12;
+      margin: 1rem 0;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .hero-text p {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .price-tag {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 1.8rem;
+    }
+
+    .price-tag span {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-weight: normal;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .btn {
+      padding: 0.85rem 1.8rem;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: none;
+      transition: 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #111;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-hover);
+      color: #fff;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--light);
+      color: var(--light);
+    }
+
+    .btn-outline:hover {
+      background: var(--light);
+      color: var(--dark);
+    }
+
+    .hero-preview {
+      flex: 1;
+      text-align: center;
+    }
+
+    .hero-preview img {
+      width: 100%;
+      max-width: 590px;
+      border-radius: 10px;
+      filter: drop-shadow(0 20px 35px rgba(0,0,0,0.7));
+      object-fit: cover;
+    }
+
+    .color-picker {
+      margin-top: 1.2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .color-swatch {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid #444;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .color-swatch.active {
+      border-color: #fff;
+      transform: scale(1.15);
+    }
+
+    /* Specs Banner */
+    .specs-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      background: #131418;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 2rem 5%;
+      gap: 1.5rem;
+    }
+
+    .spec-box {
+      border-left: 2px solid var(--primary);
+      padding-left: 1.2rem;
+    }
+
+    .spec-box h3 {
+      font-size: 1.6rem;
+      color: #fff;
+    }
+
+    .spec-box p {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    .section-container {
+      padding: 4.5rem 5%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title h2 {
+      font-size: 2.2rem;
+      text-transform: uppercase;
+    }
+
+    .section-title p {
+      color: var(--text-muted);
+    }
+
+    /* Terrain Response Interactive Grid */
+    .terrain-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+      align-items: center;
+    }
+
+    .mode-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .mode-chip {
+      padding: 0.5rem 1.1rem;
+      border-radius: 20px;
+      background: #101115;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+
+    .mode-chip.active {
+      background: var(--primary);
+      color: #111;
+      border-color: var(--primary);
+    }
+
+    .terrain-details h3 {
+      font-size: 1.6rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .terrain-details p {
+      color: var(--text-muted);
+      margin-bottom: 1.2rem;
+    }
+
+    .terrain-points {
+      list-style: none;
+    }
+
+    .terrain-points li {
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .terrain-points li i {
+      color: var(--primary);
+    }
+
+    /* Dual Calculation Hub (EMI + Highway Cost) */
+    .calc-hub {
+      max-width: 820px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .hub-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hub-tab {
+      padding: 1.2rem;
+      text-align: center;
+      background: #111216;
+      color: var(--text-muted);
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: 0.2s;
+    }
+
+    .hub-tab.active {
+      background: var(--card-bg);
+      color: var(--primary);
+      border-bottom: 2px solid var(--primary);
+    }
+
+    .hub-content {
+      padding: 2.5rem;
+      display: none;
+    }
+
+    .hub-content.active {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .calc-inputs label {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .calc-inputs input,
+    .calc-inputs select {
+      width: 100%;
+      padding: 0.75rem;
+      background: #0d0e11;
+      border: 1px solid var(--border);
+      color: #fff;
+      border-radius: 6px;
+      margin-bottom: 1.1rem;
+    }
+
+    .calc-display {
+      background: #1e2027;
+      border-radius: 8px;
+      padding: 2rem;
+      text-align: center;
+      border: 1px solid var(--border);
+    }
+
+    .calc-display h4 {
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin: 0.5rem 0;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.8);
+      place-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 440px;
+      position: relative;
+      border: 1px solid var(--border);
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--text-muted);
+    }
+
+    .modal-content input,
+    .modal-content select {
+      width: 100%;
+      padding: 0.8rem;
+      background: #0f1013;
+      border: 1px solid var(--border);
+      color: #fff;
+      margin-bottom: 1rem;
+      border-radius: 6px;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero-cta {
+        justify-content: center;
+      }
+      .nav-links {
+        display: none;
+      }
+      .terrain-grid,
+      .hub-content.active {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="index.html" class="logo">SPORTS<span>GARAGE</span></a>
+    <div class="nav-links">
+      <a href="#overview">Overview</a>
+      <a href="#specs">Specifications</a>
+      <a href="#terrain">Terrain Control</a>
+      <a href="#calc-suite">Finance & Fuel Hub</a>
+    </div>
+    <a href="index.html" class="btn btn-outline" style="padding: 0.4rem 1rem;">Back to Fleet</a>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="overview">
+    <div class="hero-text">
+      <span class="badge">Full-Size Legend</span>
+      <h1>Toyota Fortuner</h1>
+      <p>True body-on-frame toughness built to tame untamed wilderness and rule urban roads. Powered by the high-output 2.8L diesel engine.</p>
+      
+      <div class="price-tag">
+        ₹39,35,000 <span>Ex-Showroom Price</span>
+      </div>
+
+      <div class="hero-cta">
+        <button class="btn btn-primary" onclick="openModal('Book Toyota Fortuner')">Book Now</button>
+        <button class="btn btn-outline" onclick="openModal('Schedule Fortuner Test Drive')">Schedule Test Drive</button>
+      </div>
+    </div>
+
+    <div class="hero-preview">
+      <img id="fortuner-img" src="fortuner 2.jpg.jpeg" alt="Toyota Fortuner" />
+      <div class="color-picker">
+        <div class="color-swatch active" style="background: #ffffff;" title="Super White" onclick="changeColor('fortuner 2.jpg.jpeg', this)"></div>
+        <div class="color-swatch" style="background: #111111;" title="Attitude Black" onclick="changeColor('fortuner 2.jpg.jpeg', this)"></div>
+        <div class="color-swatch" style="background: #7a7f85;" title="Silver Metallic" onclick="changeColor('fortuner 2.jpg.jpeg', this)"></div>
+        <div class="color-swatch" style="background: #3c2a21;" title="Phantom Brown" onclick="changeColor('fortuner 2.jpg.jpeg', this)"></div>
+      </div>
+      <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">Select factory paint shade</p>
+    </div>
+  </section>
+
+  <!-- Specs Bar directly from your deals card -->
+  <div class="specs-strip" id="specs">
+    <div class="spec-box">
+      <h3>7 Seater</h3>
+      <p>Flexible 3-Row Capacity</p>
+    </div>
+    <div class="spec-box">
+      <h3>Manual</h3>
+      <p>6-Speed High-Torque Gearbox</p>
+    </div>
+    <div class="spec-box">
+      <h3>14.6 km/l</h3>
+      <p>Highway Diesel Mileage</p>
+    </div>
+    <div class="spec-box">
+      <h3>2.8L Turbo</h3>
+      <p>Common Rail Diesel</p>
+    </div>
+  </div>
+
+  <!-- Interactive Terrain Mode Switcher -->
+  <section class="section-container" id="terrain">
+    <div class="section-title">
+      <h2>All-Terrain Master</h2>
+      <p>Choose an environment to see how Fortuner handles challenging ground</p>
+    </div>
+
+    <div class="terrain-grid">
+      <div>
+        <img src="fortuner 2.jpg.jpeg" style="width: 100%; border-radius: 8px;" alt="Fortuner Offroad" />
+      </div>
+
+      <div class="terrain-details">
+        <div class="mode-chips">
+          <button class="mode-chip active" onclick="setTerrain('sand', this)">Deep Sand</button>
+          <button class="mode-chip" onclick="setTerrain('rock', this)">Rocky Trails</button>
+          <button class="mode-chip" onclick="setTerrain('highway', this)">Expressway</button>
+        </div>
+
+        <h3 id="terrain-title">Sand Dune & Loose Gravel Mode</h3>
+        <p id="terrain-desc">Optimizes throttle response and keeps high torque ready on tap without digging into loose silt.</p>
+
+        <ul class="terrain-points" id="terrain-list">
+          <li><i class="ri-checkbox-circle-fill"></i> Continuous torque distribution to all 4 wheels</li>
+          <li><i class="ri-checkbox-circle-fill"></i> Auto Limited-Slip Differential engagement</li>
+          <li><i class="ri-checkbox-circle-fill"></i> Pitch and roll stability assist enabled</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dual Calculator: EMI + Innova-Style Fuel Calculator -->
+  <section class="section-container" id="calc-suite" style="background: #121317;">
+    <div class="section-title">
+      <h2>Financial & Journey Planning Suite</h2>
+      <p>Switch between monthly installment plans and long-distance road trip fuel estimates</p>
+    </div>
+
+    <div class="calc-hub">
+      <div class="hub-tabs">
+        <button class="hub-tab active" onclick="switchTab('emi', this)">
+          <i class="ri-bank-card-line"></i> EMI Loan Calculator
+        </button>
+        <button class="hub-tab" onclick="switchTab('fuel', this)">
+          <i class="ri-gas-station-line"></i> Long-Route Fuel Estimator
+        </button>
+      </div>
+
+      <!-- Tab 1: EMI Calculator -->
+      <div id="tab-emi" class="hub-content active">
+        <div class="calc-inputs">
+          <label>Down Payment (₹)</label>
+          <input type="number" id="down-payment" value="700000" oninput="calculateEMI()" />
+
+          <label>Loan Tenure (Years)</label>
+          <input type="number" id="loan-term" value="5" min="1" max="7" oninput="calculateEMI()" />
+
+          <label>Interest Rate (% Annual)</label>
+          <input type="number" id="loan-rate" value="9.0" step="0.1" oninput="calculateEMI()" />
+        </div>
+
+        <div class="calc-display">
+          <span style="font-size: 0.85rem; color: var(--text-muted);">Estimated Monthly EMI</span>
+          <h4 id="emi-output">₹67,153 / mo</h4>
+          <p style="font-size: 0.8rem; color: var(--text-muted);">Principal: ₹32,35,000</p>
+        </div>
+      </div>
+
+      <!-- Tab 2: Highway Trip & Fuel Calculator -->
+      <div id="tab-fuel" class="hub-content">
+        <div class="calc-inputs">
+          <label>Planned Route Distance (km)</label>
+          <input type="number" id="trip-km" value="1000" oninput="calculateFuelCost()" />
+
+          <label>Current Diesel Price (₹/L)</label>
+          <input type="number" id="diesel-rate" value="92" oninput="calculateFuelCost()" />
+
+          <label>Passengers</label>
+          <select id="passenger-count" onchange="calculateFuelCost()">
+            <option value="4">4 Travellers</option>
+            <option value="6">6 Travellers</option>
+            <option value="7" selected>Full House (7 Travellers)</option>
+          </select>
+        </div>
+
+        <div class="calc-display">
+          <span style="font-size: 0.85rem; color: var(--text-muted);">Estimated Diesel Cost (14.6 km/l)</span>
+          <h4 id="fuel-output">₹6,301</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.3rem;">
+            Cost per head: <strong id="fuel-per-head" style="color: #fff;">₹900</strong>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Modal -->
+  <div id="action-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <h3 id="modal-heading" style="margin-bottom: 1rem;">Book Toyota Fortuner</h3>
+      <form onsubmit="handleFormSubmit(event)">
+        <input type="text" placeholder="Your Name" required />
+        <input type="tel" placeholder="Mobile Number" required />
+        <select required>
+          <option value="">Select Drivetrain Option</option>
+          <option>Fortuner 2.8 Diesel 4x2 MT (₹39.35 Lakh)</option>
+          <option>Fortuner 2.8 Diesel 4x4 MT (₹42.50 Lakh)</option>
+        </select>
+        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Submit Inquiry</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Color Swapper
+    function changeColor(imgSrc, element) {
+      document.getElementById("fortuner-img").src = imgSrc;
+      document.querySelectorAll(".color-swatch").forEach(s => s.classList.remove("active"));
+      element.classList.add("active");
+    }
+
+    // Terrain Selector Data
+    const terrainData = {
+      sand: {
+        title: "Sand Dune & Loose Gravel Mode",
+        desc: "Optimizes throttle response and keeps high torque ready on tap without digging into loose silt.",
+        bullets: [
+          "Continuous torque distribution across all axles",
+          "Auto Limited-Slip Differential engagement",
+          "Pitch and roll stability assist enabled"
+        ]
+      },
+      rock: {
+        title: "Rock Crawl & Extreme Incline Mode",
+        desc: "Low-end torque modulation with Downhill Assist Control to navigate steep descents without wheel slip.",
+        bullets: [
+          "Hill-Start Assist Control keeps the vehicle stationary on steep slopes",
+          "Engine brake boost for progressive downhill control",
+          "Underbody stone guard protections active"
+        ]
+      },
+      highway: {
+        title: "Cruise & Overtake Mode",
+        desc: "Refined 6-speed manual overdrive with low cruising engine RPM for optimal 14.6 km/l highway economy.",
+        bullets: [
+          "Quiet low-decibel cabin isolation",
+          "Adaptive Cruise Control for relaxed expressway drives",
+          "Vehicle Stability Control (VSC) on high-speed cornering"
+        ]
+      }
+    };
+
+    function setTerrain(modeKey, btn) {
+      document.querySelectorAll(".mode-chip").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      const item = terrainData[modeKey];
+      document.getElementById("terrain-title").innerText = item.title;
+      document.getElementById("terrain-desc").innerText = item.desc;
+      document.getElementById("terrain-list").innerHTML = item.bullets
+        .map(pt => `<li><i class="ri-checkbox-circle-fill"></i> ${pt}</li>`)
+        .join("");
+    }
+
+    // Calculator Hub Tabs
+    function switchTab(tabKey, btn) {
+      document.querySelectorAll(".hub-tab").forEach(t => t.classList.remove("active"));
+      document.querySelectorAll(".hub-content").forEach(c => c.classList.remove("active"));
+
+      btn.classList.add("active");
+      document.getElementById("tab-" + tabKey).classList.add("active");
+    }
+
+    // 1. EMI Calculation for Fortuner ₹39.35 Lakh
+    function calculateEMI() {
+      const basePrice = 3935000;
+      const downPayment = Number(document.getElementById("down-payment").value) || 0;
+      const termYears = Number(document.getElementById("loan-term").value) || 1;
+      const ratePercent = Number(document.getElementById("loan-rate").value) || 0;
+
+      const principal = Math.max(0, basePrice - downPayment);
+      const monthlyRate = (ratePercent / 12) / 100;
+      const totalMonths = termYears * 12;
+
+      if (monthlyRate === 0) {
+        const simpleEmi = Math.round(principal / totalMonths);
+        document.getElementById("emi-output").innerText = "₹" + simpleEmi.toLocaleString("en-IN") + " / mo";
+        return;
+      }
+
+      const emi = (principal * monthlyRate * Math.pow(1 + monthlyRate, totalMonths)) / (Math.pow(1 + monthlyRate, totalMonths) - 1);
+      document.getElementById("emi-output").innerText = "₹" + Math.round(emi).toLocaleString("en-IN") + " / mo";
+    }
+
+    // 2. Highway Fuel Calculation for Fortuner (14.6 km/l)
+    function calculateFuelCost() {
+      const distance = Number(document.getElementById("trip-km").value) || 0;
+      const fuelRate = Number(document.getElementById("diesel-rate").value) || 0;
+      const passengers = Number(document.getElementById("passenger-count").value) || 1;
+      const mileage = 14.6; // exact Fortuner rating from your cards
+
+      const litersRequired = distance / mileage;
+      const totalExpense = Math.round(litersRequired * fuelRate);
+      const perHead = Math.round(totalExpense / passengers);
+
+      document.getElementById("fuel-output").innerText = "₹" + totalExpense.toLocaleString("en-IN");
+      document.getElementById("fuel-per-head").innerText = "₹" + perHead.toLocaleString("en-IN");
+    }
+
+    // Modal Operations
+    function openModal(title) {
+      document.getElementById("modal-heading").innerText = title;
+      document.getElementById("action-modal").style.display = "grid";
+    }
+
+    function closeModal() {
+      document.getElementById("action-modal").style.display = "none";
+    }
+
+    window.onclick = function(e) {
+      if (e.target === document.getElementById("action-modal")) closeModal();
+    };
+
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      alert("Inquiry registered! Our Toyota fleet team at Sports Garage will reach out shortly.");
+      closeModal();
+    }
+
+    // Initial runs
+    calculateEMI();
+    calculateFuelCost();
+  </script>
+</body>
+</html>

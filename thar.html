@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mahindra Thar | Explore The Legend</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #d32f2f;
+      --dark: #111;
+      --card-bg: #1a1a1a;
+      --light: #f5f5f5;
+      --text-muted: #888;
+      --border: #2a2a2a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    body {
+      background-color: var(--dark);
+      color: var(--light);
+      line-height: 1.6;
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(17, 17, 17, 0.95);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5%;
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.3rem;
+      letter-spacing: 1px;
+      color: var(--light);
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: var(--primary);
+    }
+
+    .nav-links a {
+      color: var(--light);
+      text-decoration: none;
+      margin-left: 2rem;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 3rem 5%;
+      background: radial-gradient(circle at 70% 50%, #2c1212 0%, var(--dark) 70%);
+      gap: 2rem;
+    }
+
+    .hero-text {
+      max-width: 550px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--primary);
+      color: #fff;
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .hero-text h1 {
+      font-size: 3.5rem;
+      line-height: 1.1;
+      margin: 1rem 0;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .hero-text p {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .price-tag {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 1.5rem;
+    }
+
+    .price-tag span {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-weight: normal;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .btn {
+      padding: 0.8rem 1.8rem;
+      border-radius: 4px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: none;
+      transition: 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: #b71c1c;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--light);
+      color: var(--light);
+    }
+
+    .btn-outline:hover {
+      background: var(--light);
+      color: var(--dark);
+    }
+
+    .hero-preview {
+      flex: 1;
+      text-align: center;
+    }
+
+    .hero-preview img {
+      width: 100%;
+      max-width: 600px;
+      filter: drop-shadow(0 20px 30px rgba(0,0,0,0.7));
+      transition: transform 0.3s ease;
+    }
+
+    /* Color Customizer Controls */
+    .color-picker {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .color-swatch {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid #444;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .color-swatch.active {
+      border-color: #fff;
+      transform: scale(1.15);
+    }
+
+    /* Off-Road Highlight Specs */
+    .specs-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      background: #161616;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 2rem 5%;
+      gap: 1.5rem;
+    }
+
+    .spec-box {
+      border-left: 2px solid var(--primary);
+      padding-left: 1rem;
+    }
+
+    .spec-box h3 {
+      font-size: 1.5rem;
+      color: #fff;
+    }
+
+    .spec-box p {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    /* Key Features Grid */
+    .section-container {
+      padding: 4rem 5%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title h2 {
+      font-size: 2.2rem;
+      text-transform: uppercase;
+    }
+
+    .section-title p {
+      color: var(--text-muted);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .feature-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.8rem;
+    }
+
+    .feature-card i {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+
+    .feature-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* Calculator Section */
+    .calculator-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    .calc-row {
+      margin-bottom: 1.2rem;
+    }
+
+    .calc-row label {
+      display: block;
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+      color: var(--text-muted);
+    }
+
+    .calc-row input {
+      width: 100%;
+      padding: 0.75rem;
+      background: #111;
+      border: 1px solid var(--border);
+      color: #fff;
+      border-radius: 4px;
+    }
+
+    .calc-result {
+      background: #222;
+      padding: 1rem;
+      border-radius: 4px;
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .calc-result h4 {
+      font-size: 1.6rem;
+      color: var(--primary);
+    }
+
+    /* Booking Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.8);
+      place-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      width: 90%;
+      max-width: 450px;
+      position: relative;
+      border: 1px solid var(--border);
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--text-muted);
+    }
+
+    .modal-content form input,
+    .modal-content form select {
+      width: 100%;
+      padding: 0.8rem;
+      background: #111;
+      border: 1px solid var(--border);
+      color: #fff;
+      margin-bottom: 1rem;
+      border-radius: 4px;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero-cta {
+        justify-content: center;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Minimal Brand Navigation -->
+  <nav>
+    <a href="index.html" class="logo">SPORTS<span>GARAGE</span></a>
+    <div class="nav-links">
+      <a href="#overview">Overview</a>
+      <a href="#specs">Capabilities</a>
+      <a href="#features">Features</a>
+      <a href="#calculator">EMI Calculator</a>
+    </div>
+    <a href="index.html" class="btn btn-outline" style="padding: 0.4rem 1rem;">Back to Fleet</a>
+  </nav>
+
+  <!-- Hero & Model Showcase -->
+  <section class="hero" id="overview">
+    <div class="hero-text">
+      <span class="badge">Off-Road Icon</span>
+      <h1>Mahindra Thar</h1>
+      <p>Built for the uncharted. The Thar combines authentic 4x4 ruggedness with contemporary highway comfort and iconic styling.</p>
+      
+      <div class="price-tag">
+        ₹18,00,000 <span>Starting Ex-Showroom</span>
+      </div>
+
+      <div class="hero-cta">
+        <button class="btn btn-primary" onclick="openModal('Book Thar Booking')">Book Now</button>
+        <button class="btn btn-outline" onclick="openModal('Test Drive Request')">Schedule Test Drive</button>
+      </div>
+    </div>
+
+    <div class="hero-preview">
+      <img id="thar-image" src="thar.webp" alt="Mahindra Thar Red" />
+      <div class="color-picker">
+        <div class="color-swatch active" style="background: #a81c1c;" title="Red Rage" onclick="changeColor('thar.webp', this)"></div>
+        <div class="color-swatch" style="background: #1c1c1c;" title="Napoli Black" onclick="changeColor('thar.webp', this)"></div>
+        <div class="color-swatch" style="background: #7d8487;" title="Galaxy Grey" onclick="changeColor('thar.webp', this)"></div>
+        <div class="color-swatch" style="background: #c2a77a;" title="Desert Fury" onclick="changeColor('thar.webp', this)"></div>
+      </div>
+      <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">Click swatches to preview shades</p>
+    </div>
+  </section>
+
+  <!-- Terrain & Capability Metrics -->
+  <div class="specs-strip" id="specs">
+    <div class="spec-box">
+      <h3>650 mm</h3>
+      <p>Water Wading Depth</p>
+    </div>
+    <div class="spec-box">
+      <h3>226 mm</h3>
+      <p>Unladen Ground Clearance</p>
+    </div>
+    <div class="spec-box">
+      <h3>41.8°</h3>
+      <p>Approach Angle</p>
+    </div>
+    <div class="spec-box">
+      <h3>300 Nm</h3>
+      <p>Torque @ 1600-2800 RPM</p>
+    </div>
+  </div>
+
+  <!-- Dedicated Capabilities Grid -->
+  <section class="section-container" id="features">
+    <div class="section-title">
+      <h2>Engineering & Tech</h2>
+      <p>Everything engineered inside the Thar LX Series</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <i class="ri-compass-3-line"></i>
+        <h3>Shift-On-The-Fly 4x4</h3>
+        <p>Mechanical transfer case with 2H, 4H, and 4L low-reduction ratios to crawl over mud, rocks, and sand.</p>
+      </div>
+
+      <div class="feature-card">
+        <i class="ri-shield-cross-line"></i>
+        <h3>4-Star Global NCAP</h3>
+        <p>Built with a high-strength roll-cage architecture, dual airbags, ABS with EBD, and ISOFIX child mounts.</p>
+      </div>
+
+      <div class="feature-card">
+        <i class="ri-water-flash-line"></i>
+        <h3>IP54 Drizzle Resistance</h3>
+        <p>Drizzle-resistant 7-inch infotainment system and interior dashboard switches with floor drain plugs for easy cleaning.</p>
+      </div>
+
+      <div class="feature-card">
+        <i class="ri-dashboard-2-line"></i>
+        <h3>Off-Road Telematics</h3>
+        <p>Real-time digital displays showing pitch angle, roll angle, steering angle, compass orientation, and G-monitor readings.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Financial Estimation Tool -->
+  <section class="section-container" id="calculator" style="background: #141414;">
+    <div class="section-title">
+      <h2>Quick EMI Calculator</h2>
+      <p>Estimate your monthly payment for the Thar</p>
+    </div>
+
+    <div class="calculator-box">
+      <div class="calc-row">
+        <label>Down Payment (₹)</label>
+        <input type="number" id="down-payment" value="300000" oninput="calculateEMI()" />
+      </div>
+      <div class="calc-row">
+        <label>Loan Duration (Years)</label>
+        <input type="number" id="loan-term" value="5" min="1" max="7" oninput="calculateEMI()" />
+      </div>
+      <div class="calc-row">
+        <label>Interest Rate (% Annual)</label>
+        <input type="number" id="loan-rate" value="9.5" step="0.1" oninput="calculateEMI()" />
+      </div>
+
+      <div class="calc-result">
+        <span style="font-size: 0.85rem; color: var(--text-muted);">Estimated Monthly EMI</span>
+        <h4 id="emi-output">₹31,525 / month</h4>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Action Modal -->
+  <div id="action-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <h3 id="modal-heading" style="margin-bottom: 1rem;">Book Mahindra Thar</h3>
+      <form onsubmit="handleTharForm(event)">
+        <input type="text" placeholder="Your Name" required />
+        <input type="tel" placeholder="Mobile Number" required />
+        <select required>
+          <option value="">Select Variant</option>
+          <option>LX Diesel Manual Hard Top</option>
+          <option>LX Diesel Automatic Hard Top</option>
+          <option>LX Petrol Automatic Convertible</option>
+        </select>
+        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Submit Request</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Color Swatch Swapper
+    function changeColor(imgSrc, element) {
+      document.getElementById("thar-image").src = imgSrc;
+      document.querySelectorAll(".color-swatch").forEach(swatch => swatch.classList.remove("active"));
+      element.classList.add("active");
+    }
+
+    // Modal Manager
+    function openModal(actionName) {
+      document.getElementById("modal-heading").innerText = actionName;
+      document.getElementById("action-modal").style.display = "grid";
+    }
+
+    function closeModal() {
+      document.getElementById("action-modal").style.display = "none";
+    }
+
+    window.onclick = function(e) {
+      if (e.target === document.getElementById("action-modal")) closeModal();
+    };
+
+    function handleTharForm(e) {
+      e.preventDefault();
+      alert("Application sent successfully! A Mahindra specialist from Sports Garage will get in touch shortly.");
+      closeModal();
+    }
+
+    // Interactive Loan Calculation Formula
+    function calculateEMI() {
+      const basePrice = 1800000;
+      const downPayment = Number(document.getElementById("down-payment").value) || 0;
+      const termYears = Number(document.getElementById("loan-term").value) || 1;
+      const ratePercent = Number(document.getElementById("loan-rate").value) || 0;
+
+      const principal = Math.max(0, basePrice - downPayment);
+      const monthlyRate = (ratePercent / 12) / 100;
+      const totalMonths = termYears * 12;
+
+      if (monthlyRate === 0) {
+        const simpleEmi = Math.round(principal / totalMonths);
+        document.getElementById("emi-output").innerText = "₹" + simpleEmi.toLocaleString("en-IN") + " / month";
+        return;
+      }
+
+      const emi = (principal * monthlyRate * Math.pow(1 + monthlyRate, totalMonths)) / (Math.pow(1 + monthlyRate, totalMonths) - 1);
+      document.getElementById("emi-output").innerText = "₹" + Math.round(emi).toLocaleString("en-IN") + " / month";
+    }
+
+    calculateEMI();
+  </script>
+</body>
+</html>

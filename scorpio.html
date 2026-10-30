@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mahindra Scorpio Classic S11 | Sports Garage</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #c59b27;
+      --primary-dark: #9e7a1b;
+      --dark: #101114;
+      --card-bg: #18191e;
+      --light: #f5f6f8;
+      --text-muted: #8c909a;
+      --border: #282a32;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    body {
+      background-color: var(--dark);
+      color: var(--light);
+      line-height: 1.6;
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(16, 17, 20, 0.95);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5%;
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.3rem;
+      letter-spacing: 1px;
+      color: var(--light);
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: var(--primary);
+    }
+
+    .nav-links a {
+      color: var(--light);
+      text-decoration: none;
+      margin-left: 2rem;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 3rem 5%;
+      background: radial-gradient(circle at 75% 50%, #292416 0%, var(--dark) 70%);
+      gap: 2rem;
+    }
+
+    .hero-text {
+      max-width: 550px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--primary);
+      color: #111;
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .hero-text h1 {
+      font-size: 3.2rem;
+      line-height: 1.15;
+      margin: 1rem 0;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .hero-text p {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .price-tag {
+      font-size: 2.1rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 1.5rem;
+    }
+
+    .price-tag span {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-weight: normal;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .btn {
+      padding: 0.8rem 1.8rem;
+      border-radius: 4px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: none;
+      transition: 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #111;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      color: #fff;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--light);
+      color: var(--light);
+    }
+
+    .btn-outline:hover {
+      background: var(--light);
+      color: var(--dark);
+    }
+
+    .hero-preview {
+      flex: 1;
+      text-align: center;
+    }
+
+    .hero-preview img {
+      width: 100%;
+      max-width: 580px;
+      border-radius: 8px;
+      filter: drop-shadow(0 20px 30px rgba(0,0,0,0.6));
+      object-fit: cover;
+    }
+
+    .color-picker {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .color-swatch {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid #444;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .color-swatch.active {
+      border-color: #fff;
+      transform: scale(1.15);
+    }
+
+    /* Specs Banner */
+    .specs-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      background: #141519;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 2rem 5%;
+      gap: 1.5rem;
+    }
+
+    .spec-box {
+      border-left: 2px solid var(--primary);
+      padding-left: 1rem;
+    }
+
+    .spec-box h3 {
+      font-size: 1.5rem;
+      color: #fff;
+    }
+
+    .spec-box p {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    /* Features Grid */
+    .section-container {
+      padding: 4rem 5%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title h2 {
+      font-size: 2.2rem;
+      text-transform: uppercase;
+    }
+
+    .section-title p {
+      color: var(--text-muted);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .feature-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.8rem;
+    }
+
+    .feature-card i {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+
+    .feature-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* Seating Layout Section */
+    .layout-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2.5rem;
+      align-items: center;
+      margin-top: 2rem;
+    }
+
+    .layout-info h3 {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+    }
+
+    .layout-info ul {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+
+    .layout-info ul li {
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-muted);
+    }
+
+    .layout-info ul li i {
+      color: var(--primary);
+    }
+
+    /* Calculator Section */
+    .calculator-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    .calc-row {
+      margin-bottom: 1.2rem;
+    }
+
+    .calc-row label {
+      display: block;
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+      color: var(--text-muted);
+    }
+
+    .calc-row input {
+      width: 100%;
+      padding: 0.75rem;
+      background: #101114;
+      border: 1px solid var(--border);
+      color: #fff;
+      border-radius: 4px;
+    }
+
+    .calc-result {
+      background: #1f2128;
+      padding: 1rem;
+      border-radius: 4px;
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .calc-result h4 {
+      font-size: 1.6rem;
+      color: var(--primary);
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.8);
+      place-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      width: 90%;
+      max-width: 450px;
+      position: relative;
+      border: 1px solid var(--border);
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--text-muted);
+    }
+
+    .modal-content form input,
+    .modal-content form select {
+      width: 100%;
+      padding: 0.8rem;
+      background: #101114;
+      border: 1px solid var(--border);
+      color: #fff;
+      margin-bottom: 1rem;
+      border-radius: 4px;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero-cta {
+        justify-content: center;
+      }
+      .nav-links {
+        display: none;
+      }
+      .layout-box {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="index.html" class="logo">SPORTS<span>GARAGE</span></a>
+    <div class="nav-links">
+      <a href="#overview">Overview</a>
+      <a href="#performance">Performance</a>
+      <a href="#features">Features</a>
+      <a href="#cabin">Cabin & Space</a>
+      <a href="#calculator">EMI Calculator</a>
+    </div>
+    <a href="index.html" class="btn btn-outline" style="padding: 0.4rem 1rem;">Back to Fleet</a>
+  </nav>
+
+  <!-- Hero & Model Showcase -->
+  <section class="hero" id="overview">
+    <div class="hero-text">
+      <span class="badge">Classic Powerhouse</span>
+      <h1>Scorpio Classic S11</h1>
+      <p>The original ruler of Indian roads. Powered by the all-aluminium lightweight mHawk diesel engine with imposing upright stance and unmatched road presence.</p>
+      
+      <div class="price-tag">
+        ₹18,90,000 <span>Ex-Showroom Price</span>
+      </div>
+
+      <div class="hero-cta">
+        <button class="btn btn-primary" onclick="openModal('Book Scorpio Classic S11')">Book Now</button>
+        <button class="btn btn-outline" onclick="openModal('Schedule S11 Test Drive')">Schedule Test Drive</button>
+      </div>
+    </div>
+
+    <div class="hero-preview">
+      <img id="scorpio-img" src="s11.jpg" alt="Mahindra Scorpio S11" />
+      <div class="color-picker">
+        <div class="color-swatch active" style="background: #ffffff;" title="Pearl White" onclick="changeColor('s11.jpg', this)"></div>
+        <div class="color-swatch" style="background: #141414;" title="Napoli Black" onclick="changeColor('s11.jpg', this)"></div>
+        <div class="color-swatch" style="background: #8b8f94;" title="Galaxy Grey" onclick="changeColor('s11.jpg', this)"></div>
+        <div class="color-swatch" style="background: #962525;" title="Molten Red" onclick="changeColor('s11.jpg', this)"></div>
+      </div>
+      <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">Official Classic S11 Paint Finishes</p>
+    </div>
+  </section>
+
+  <!-- Performance Banner -->
+  <div class="specs-strip" id="performance">
+    <div class="spec-box">
+      <h3>130 BHP</h3>
+      <p>Power @ 3750 RPM</p>
+    </div>
+    <div class="spec-box">
+      <h3>300 Nm</h3>
+      <p>Torque @ 1600-2800 RPM</p>
+    </div>
+    <div class="spec-box">
+      <h3>18.0 km/l</h3>
+      <p>Fuel Efficiency (Diesel)</p>
+    </div>
+    <div class="spec-box">
+      <h3>7 Seater</h3>
+      <p>Captain / Side-Facing Config</p>
+    </div>
+  </div>
+
+  <!-- Engineering & Features -->
+  <section class="section-container" id="features">
+    <div class="section-title">
+      <h2>Engineered For Heavy Duty</h2>
+      <p>Key highlights specific to the Classic S11 trim</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <i class="ri-fire-line"></i>
+        <h3>Gen-2 mHawk Engine</h3>
+        <p>Lightweight aluminum construction that drops 55 kg off the front axle while providing 14% better fuel efficiency and high low-end grunt.</p>
+      </div>
+
+      <div class="feature-card">
+        <i class="ri-sound-module-line"></i>
+        <h3>Cable-Shift 6-Speed Gearbox</h3>
+        <p>Short-throw, refined manual transmission with an optimized shift pattern for smooth highway cruising and seamless city overtakes.</p>
+      </div>
+
+      <div class="feature-card">
+        <i class="ri-tv-line"></i>
+        <h3>9.0-Inch Touchscreen</h3>
+        <p>Smartphone screen-mirroring audio unit with Bluetooth audio streaming, navigation integration, and steering-wheel-mounted controls.</p>
+      </div>
+
+      <div class="feature-card">
+        <i class="ri-lightbulb-flash-line"></i>
+        <h3>Tower LED Tail Lamps</h3>
+        <p>Signature Scorpio stacked tail lamps, projector headlamps with eyebrow LED eyelines, and classic multi-spoke diamond-cut alloy wheels.</p>
+      </div>
+    </div>
+
+    <!-- Seating & Interior Feature -->
+    <div class="layout-box" id="cabin">
+      <div>
+        <img src="s11.jpg" style="width: 100%; border-radius: 8px;" alt="Scorpio Cabin Space" />
+      </div>
+      <div class="layout-info">
+        <span class="badge">Interior Space</span>
+        <h3 style="margin-top: 0.8rem;">Spacious 7-Seater Layout</h3>
+        <p style="color: var(--text-muted); margin-bottom: 1.2rem;">
+          The S11 gives you the commanding high seating position ("the throne view") with premium quilted upholstery and dedicated vents for all rows.
+        </p>
+        <ul>
+          <li><i class="ri-check-line"></i> Center-row Captain Seats with individual armrests</li>
+          <li><i class="ri-check-line"></i> Micro-hybrid stop-start engine technology</li>
+          <li><i class="ri-check-line"></i> Hydraulic bonnet lift assist struts</li>
+          <li><i class="ri-check-line"></i> Full auto-climate temperature controls</li>
+        </ul>
+        <button class="btn btn-primary" onclick="openModal('Book S11 Cabin Demo')">Request Cabin Tour</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- EMI Calculator -->
+  <section class="section-container" id="calculator" style="background: #141519;">
+    <div class="section-title">
+      <h2>Scorpio S11 EMI Calculator</h2>
+      <p>Plan your financing for the ₹18.90 Lakh ex-showroom variant</p>
+    </div>
+
+    <div class="calculator-box">
+      <div class="calc-row">
+        <label>Down Payment (₹)</label>
+        <input type="number" id="down-payment" value="350000" oninput="calculateEMI()" />
+      </div>
+      <div class="calc-row">
+        <label>Loan Duration (Years)</label>
+        <input type="number" id="loan-term" value="5" min="1" max="7" oninput="calculateEMI()" />
+      </div>
+      <div class="calc-row">
+        <label>Interest Rate (% Annual)</label>
+        <input type="number" id="loan-rate" value="9.2" step="0.1" oninput="calculateEMI()" />
+      </div>
+
+      <div class="calc-result">
+        <span style="font-size: 0.85rem; color: var(--text-muted);">Estimated Monthly Installment</span>
+        <h4 id="emi-output">₹32,185 / month</h4>
+      </div>
+    </div>
+  </section>
+
+  <!-- Action Modal -->
+  <div id="action-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <h3 id="modal-heading" style="margin-bottom: 1rem;">Book Scorpio S11</h3>
+      <form onsubmit="handleScorpioForm(event)">
+        <input type="text" placeholder="Your Name" required />
+        <input type="tel" placeholder="Mobile Number" required />
+        <select required>
+          <option value="">Choose Seating Configuration</option>
+          <option>7-Seater (Captain Seats Middle Row)</option>
+          <option>7-Seater (Side-Facing Third Row)</option>
+          <option>9-Seater (Side-Facing Rear Seats)</option>
+        </select>
+        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Confirm Booking</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function changeColor(imgSrc, element) {
+      document.getElementById("scorpio-img").src = imgSrc;
+      document.querySelectorAll(".color-swatch").forEach(swatch => swatch.classList.remove("active"));
+      element.classList.add("active");
+    }
+
+    function openModal(actionTitle) {
+      document.getElementById("modal-heading").innerText = actionTitle;
+      document.getElementById("action-modal").style.display = "grid";
+    }
+
+    function closeModal() {
+      document.getElementById("action-modal").style.display = "none";
+    }
+
+    window.onclick = function(e) {
+      if (e.target === document.getElementById("action-modal")) closeModal();
+    };
+
+    function handleScorpioForm(e) {
+      e.preventDefault();
+      alert("Booking request received! Our showroom executive will contact you with test drive confirmation.");
+      closeModal();
+    }
+
+    function calculateEMI() {
+      const basePrice = 1890000;
+      const downPayment = Number(document.getElementById("down-payment").value) || 0;
+      const termYears = Number(document.getElementById("loan-term").value) || 1;
+      const ratePercent = Number(document.getElementById("loan-rate").value) || 0;
+
+      const principal = Math.max(0, basePrice - downPayment);
+      const monthlyRate = (ratePercent / 12) / 100;
+      const totalMonths = termYears * 12;
+
+      if (monthlyRate === 0) {
+        const simpleEmi = Math.round(principal / totalMonths);
+        document.getElementById("emi-output").innerText = "₹" + simpleEmi.toLocaleString("en-IN") + " / month";
+        return;
+      }
+
+      const emi = (principal * monthlyRate * Math.pow(1 + monthlyRate, totalMonths)) / (Math.pow(1 + monthlyRate, totalMonths) - 1);
+      document.getElementById("emi-output").innerText = "₹" + Math.round(emi).toLocaleString("en-IN") + " / month";
+    }
+
+    calculateEMI();
+  </script>
+</body>
+</html>
